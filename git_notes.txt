@@ -1,0 +1,173 @@
+Git
+1. git clone https://YOUR_PERSONAL_TOKEN@github.com/YOUR_USERNAME/REPOSITORY_NAME.git       
+
+the command clones a remote repository 
+
+2. git remote set-url origin https://YOUR_PERSONAL_TOKEN@github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+
+Assigns a new access token to an existing repository. 
+The command should be ran inside the directory representing the repository. 
+
+Manual
+In the root of the directory for the specific repository, cd to .git
+Then vim config and edit the url.
+
+2. git add . - the command adds changes to git
+
+3. git status - the command checks the status of git.
+
+4. git commit -m "text" - the command commits changes with a commit message 
+
+5. git push - the command pushes changes to a remote repository 
+
+6. git pull - the command updates a local repository using the contents of a remote repository
+
+7. git branch - the command checks how many branches are currently in git
+
+8. git branch branch_name - the command creates a branch with the specified name
+
+9. git checkout branch_name - the command switches to the branch with the specified name
+
+10. git branch -d branch_name - the command deletes a branch
+
+11. git config --global user.email "Your github email" - command registers your email with git 
+
+12. git config --global user.name "Your Github username" - command registers your password with git 
+
+git config -l - command checks for your git details 
+
+13. git config --global credential.helper cache - command caches your username and password 
+
+14. git log - 
+The git log command displays the commit history of a Git repository. It shows the list of commits in reverse chronological order (i.e., most recent commit first) by default, including the commit message, author, date, and a unique commit hash for each commit.
+
+Some common options to customize the output of the git log command include:
+
+--oneline: shows each commit on a single line, with only the first several characters of the commit hash and the commit message
+--graph: shows the commit history as a graph, with lines connecting related commits
+--author: filters the commit history to only show commits made by the specified author
+--since/--until: filters the commit history to only show commits made within the specified time range
+You can also use other flags to customize the output, such as --pretty to format the output using a predefined format, or --grep to search the commit messages for a specific string.
+
+12. Amending a commit message 
+
+git commit --amend -m "correct commit message"
+
+After that you force push *git push -f*
+
+13. Merging branch to main 
+
+Step 1: Check out to master branch 
+
+git checkout master 
+
+Step 2: Pull latest changes in master 
+
+git pull origin master 
+
+Step 3: Merge with master branch 
+
+git merge sub_branch_name
+
+When there is a merge conflict, 
+
+Step 4: Find out the source of conflict 
+
+git status 
+
+Step 5: Open the file that has the conflict using your favourite command-line editor 
+
+To see the beginning of the merge conflict in your file, search the file for the conflict marker <<<<<<<. When you open the file in your text editor, you'll see the changes from the HEAD or base branch after the line <<<<<<< HEAD. Next, you'll see =======, which divides your changes from the changes in the other branch, followed by >>>>>>> BRANCH-NAME. In this example, one person wrote "open an issue" in the base or HEAD branch and another person wrote "ask your question in IRC" in the compare branch or branch-a.
+
+If you have questions, please
+<<<<<<< HEAD
+open an issue
+=======
+ask your question in IRC.
+>>>>>>> branch-a
+
+Decide if you want to keep only your branch's changes, keep only the other branch's changes, or make a brand new change, which may incorporate changes from both branches. Delete the conflict markers <<<<<<<, =======, >>>>>>> and make the changes you want in the final merge. In this example, both changes are incorporated into the final merge:
+
+If you have questions, please open an issue or ask in our IRC channel if it's more urgent.
+
+Step 6: Add or stage your changes.
+
+$ git add .
+
+Step 7: Commit your changes with a comment.
+
+$ git commit -m "Resolved merge conflict by incorporating both suggestions."
+
+14. Using the gitignore file
+
+Step 1: Create the file
+
+touch .gitignore
+
+Step 2: Verify the file has been created
+
+ls -A
+
+*being used because the file is an hidden file
+
+Step 3: Use your favourite editor to open the file
+
+Step 4: Insert the names of the files and directories you don't want to include in the commit. You can alternatively use pattern matching to define git ignore rules.
+
+Step 5: Stage the changes 
+
+git add . 
+
+Step 6: Commit the changes
+
+git commit -m "text of commit"
+
+Step 7: Push
+
+git push
+
+
+Downloading a single folder from github:
+
+Step 1: Modify the URL for subversion. Replace tree/master with trunk.
+
+https://github.com/lodash/lodash/tree/master/test ➜
+
+https://github.com/lodash/lodash/trunk/test
+
+Step 2: Download the folder. Go to the command line and grab the folder with SVN.
+
+svn checkout https://github.com/lodash/lodash/trunk/test
+
+You might not see any activity immediately because Github takes up to 30 seconds to convert larger repositories, so be patient.
+
+Full URL format explanation:
+
+If you're interested in master branch, use trunk instead. So the full path is trunk/foldername
+If you're interested in foo branch, use branches/foo instead. The full path looks like branches/foo/foldername
+Protip: You can use svn ls to see available tags and branches before downloading if you wish
+That's all! Gith
+
+
+
+Connecting a directory with an empty github repository
+
+Adding the directory to git: 
+
+git init 
+
+Staging the files in the directory:
+
+git add . 
+
+Committing the files to git:
+
+git commit -m "commit message"
+
+Adding github url to git:
+
+git remote add origin https://PERSONAL_ACCESS_TOKEN@github.com/USERNAME/REPO_NAME.git
+
+Pushing the files to github:
+
+git push --set-upstream origin master
